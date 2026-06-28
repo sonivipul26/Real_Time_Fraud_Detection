@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML Models
+*.pkl
+
+# Large datasets
+data/raw/*.csv
+data/processed/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
