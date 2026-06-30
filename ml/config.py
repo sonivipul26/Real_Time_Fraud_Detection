@@ -24,6 +24,18 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 RAW_DATA_PATH = RAW_DATA_DIR / "creditcard.csv"
 
+# ==============================
+# Processed Dataset Paths
+# ==============================
+
+PROCESSED_DATA_PATH = PROCESSED_DATA_DIR / "creditcard_clean.csv"
+
+X_TRAIN_PATH = PROCESSED_DATA_DIR / "X_train.csv"
+X_TEST_PATH = PROCESSED_DATA_DIR / "X_test.csv"
+
+Y_TRAIN_PATH = PROCESSED_DATA_DIR / "y_train.csv"
+Y_TEST_PATH = PROCESSED_DATA_DIR / "y_test.csv"
+
 
 # ==============================
 # Model Directories
