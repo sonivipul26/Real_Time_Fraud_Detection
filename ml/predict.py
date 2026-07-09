@@ -15,7 +15,11 @@ Author: Vipul Soni
 import joblib
 import numpy as np
 
+from ml.preprocessing import load_scaler
+
 from ml.config import MODELS_DIR
+
+from ml.inference import preprocess_transaction
 
 # ==========================================================
 # Load Trained Model
@@ -27,6 +31,12 @@ try:
     model = joblib.load(MODEL_PATH)
 except Exception as e:
     raise RuntimeError(f"Failed to load model: {e}")
+
+
+try:
+    scaler = load_scaler()
+except Exception as e:
+    raise RuntimeError(f"Failed to load scaler: {e}")
 
 # Number of features expected by the model
 EXPECTED_FEATURES = model.n_features_in_
@@ -62,6 +72,24 @@ def _validate_transaction(transaction):
     return np.array(transaction).reshape(1, -1)
 
 
+def _preprocess_transaction(transaction):
+    """
+    Scale Time and Amount columns using the saved scaler.
+    """
+
+    transaction = transaction.copy()
+
+    transaction[0] = scaler.transform(
+        [[transaction[0], transaction[-1]]]
+    )[0][0]
+
+    transaction[-1] = scaler.transform(
+        [[transaction[0], transaction[-1]]]
+    )[0][1]
+
+    return transaction
+
+
 # ==========================================================
 # Prediction Function
 # ==========================================================
@@ -86,6 +114,9 @@ def predict(transaction):
     try:
 
         transaction = _validate_transaction(transaction)
+
+        transaction = preprocess_transaction(transaction.flatten().tolist())
+        transaction = np.array(transaction).reshape(1, -1)
 
         prediction = model.predict(transaction)
 

@@ -92,3 +92,11 @@ def save_scaler(scaler):
     )
 
     print("Scaler Saved Successfully")
+
+
+def load_scaler():
+    """
+    Load the trained scaler.
+    """
+
+    return joblib.load(SCALER_PATH)
