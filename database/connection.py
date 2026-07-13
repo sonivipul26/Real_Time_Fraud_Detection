@@ -30,6 +30,25 @@ SessionLocal = sessionmaker(
 )
 
 # ==========================================
+# Database Dependency
+# ==========================================
+
+def get_db():
+    """
+    Create database session for every request.
+    """
+
+    db = SessionLocal()
+
+    try:
+
+        yield db
+
+    finally:
+
+        db.close()
+
+# ==========================================
 # Base Class
 # ==========================================
 

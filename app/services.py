@@ -1,8 +1,10 @@
 from ml.predict import predict
 from ml.predict import predict_probability
 
+from database.crud import create_transaction
 
-def predict_transaction(request):
+
+def predict_transaction(request, db):
 
     features = [
 
@@ -45,7 +47,24 @@ def predict_transaction(request):
 
     probability = predict_probability(features)
 
+    create_transaction(
+
+        db=db,
+
+        transaction_time=request.Time,
+
+        amount=request.Amount,
+
+        prediction=prediction,
+
+        fraud_probability=probability
+
+    )
+
     return {
+
         "prediction": prediction,
+
         "fraud_probability": probability
+
     }

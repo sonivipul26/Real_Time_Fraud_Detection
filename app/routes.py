@@ -1,15 +1,22 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from database.connection import get_db
 
 from app.schemas import (
     HealthResponse,
     PredictionRequest,
-    PredictionResponse
+    PredictionResponse,
 )
 
 from app.services import predict_transaction
 
 router = APIRouter()
 
+
+# ==========================================================
+# Health Endpoint
+# ==========================================================
 
 @router.get(
     "/health",
@@ -24,14 +31,22 @@ def health():
     }
 
 
+# ==========================================================
+# Prediction Endpoint
+# ==========================================================
+
 @router.post(
     "/predict",
     response_model=PredictionResponse
 )
-def predict_api(request: PredictionRequest):
+def predict_api(
+    request: PredictionRequest,
+    db: Session = Depends(get_db)
+):
 
     result = predict_transaction(
-    request
-)
+        request,
+        db
+    )
 
     return result

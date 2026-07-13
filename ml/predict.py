@@ -15,7 +15,7 @@ Author: Vipul Soni
 import joblib
 import numpy as np
 
-from ml.preprocessing import load_scaler
+
 
 from ml.config import MODELS_DIR
 
@@ -33,10 +33,6 @@ except Exception as e:
     raise RuntimeError(f"Failed to load model: {e}")
 
 
-try:
-    scaler = load_scaler()
-except Exception as e:
-    raise RuntimeError(f"Failed to load scaler: {e}")
 
 # Number of features expected by the model
 EXPECTED_FEATURES = model.n_features_in_
@@ -72,22 +68,7 @@ def _validate_transaction(transaction):
     return np.array(transaction).reshape(1, -1)
 
 
-def _preprocess_transaction(transaction):
-    """
-    Scale Time and Amount columns using the saved scaler.
-    """
 
-    transaction = transaction.copy()
-
-    transaction[0] = scaler.transform(
-        [[transaction[0], transaction[-1]]]
-    )[0][0]
-
-    transaction[-1] = scaler.transform(
-        [[transaction[0], transaction[-1]]]
-    )[0][1]
-
-    return transaction
 
 
 # ==========================================================
@@ -133,25 +114,24 @@ def predict(transaction):
 def predict_probability(transaction):
     """
     Predict fraud probability.
-
-    Parameters
-    ----------
-    transaction : list
-
-    Returns
-    -------
-    float
-
-    Fraud probability between 0 and 1.
     """
 
     try:
 
         transaction = _validate_transaction(transaction)
 
+        transaction = preprocess_transaction(
+            transaction.flatten().tolist()
+        )
+
+        transaction = np.array(transaction).reshape(1, -1)
+
         probability = model.predict_proba(transaction)
 
         return float(probability[0][1])
 
     except Exception as e:
-        raise RuntimeError(f"Probability prediction failed: {e}")
+
+        raise RuntimeError(
+            f"Probability prediction failed: {e}"
+        )
