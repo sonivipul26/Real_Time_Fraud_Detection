@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-# -----------------------------------------
+# ==========================================
 # Health Response
-# -----------------------------------------
+# ==========================================
 
 class HealthResponse(BaseModel):
     status: str
@@ -11,18 +11,9 @@ class HealthResponse(BaseModel):
     version: str
 
 
-# -----------------------------------------
+# ==========================================
 # Prediction Request
-# -----------------------------------------
-
-from pydantic import BaseModel
-
-
-class HealthResponse(BaseModel):
-    status: str
-    model: str
-    version: str
-
+# ==========================================
 
 class PredictionRequest(BaseModel):
 
@@ -59,17 +50,49 @@ class PredictionRequest(BaseModel):
 
     Amount: float
 
+    def to_feature_list(self):
 
-class PredictionResponse(BaseModel):
+        return [
 
-    prediction: int
+            self.Time,
 
-    fraud_probability: float
+            self.V1,
+            self.V2,
+            self.V3,
+            self.V4,
+            self.V5,
+            self.V6,
+            self.V7,
+            self.V8,
+            self.V9,
+            self.V10,
+            self.V11,
+            self.V12,
+            self.V13,
+            self.V14,
+            self.V15,
+            self.V16,
+            self.V17,
+            self.V18,
+            self.V19,
+            self.V20,
+            self.V21,
+            self.V22,
+            self.V23,
+            self.V24,
+            self.V25,
+            self.V26,
+            self.V27,
+            self.V28,
+
+            self.Amount
+
+        ]
 
 
-# -----------------------------------------
+# ==========================================
 # Prediction Response
-# -----------------------------------------
+# ==========================================
 
 class PredictionResponse(BaseModel):
 
