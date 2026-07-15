@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from utils.logger import logger
+
 from database.connection import get_db
 
 from app.schemas import (
@@ -24,6 +26,8 @@ router = APIRouter()
 )
 def health():
 
+    logger.info("Health Endpoint Called")
+
     return {
         "status": "healthy",
         "model": "XGBoost",
@@ -44,9 +48,13 @@ def predict_api(
     db: Session = Depends(get_db)
 ):
 
+    logger.info("Prediction API Called")
+
     result = predict_transaction(
-        request,
-        db
+        request=request,
+        db=db
     )
+
+    logger.info("Prediction Completed Successfully")
 
     return result

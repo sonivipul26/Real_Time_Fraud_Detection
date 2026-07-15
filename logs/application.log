@@ -1,0 +1,87 @@
+2026-07-15 23:14:50,789 | INFO | ============================================================
+2026-07-15 23:14:50,789 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:14:50,789 | INFO | Application Version : 1.0.0
+2026-07-15 23:14:50,792 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:15:02,703 | INFO | Home Endpoint Accessed
+2026-07-15 23:16:09,514 | INFO | ============================================================
+2026-07-15 23:16:09,515 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:16:09,515 | INFO | Application Version : 1.0.0
+2026-07-15 23:16:09,518 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:16:12,271 | INFO | ============================================================
+2026-07-15 23:16:12,272 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:16:12,272 | INFO | Application Version : 1.0.0
+2026-07-15 23:16:12,274 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:16:45,046 | INFO | ============================================================
+2026-07-15 23:16:45,046 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:16:45,048 | INFO | Application Version : 1.0.0
+2026-07-15 23:16:45,050 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:17:02,802 | INFO | ============================================================
+2026-07-15 23:17:02,802 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:17:02,802 | INFO | Application Version : 1.0.0
+2026-07-15 23:17:02,804 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:18:51,178 | INFO | Health Endpoint Called
+2026-07-15 23:19:50,892 | INFO | ============================================================
+2026-07-15 23:19:50,892 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:19:50,892 | INFO | Application Version : 1.0.0
+2026-07-15 23:19:50,894 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:19:54,044 | INFO | ============================================================
+2026-07-15 23:19:54,046 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:19:54,046 | INFO | Application Version : 1.0.0
+2026-07-15 23:19:54,048 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:20:16,782 | INFO | ============================================================
+2026-07-15 23:20:16,782 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:20:16,782 | INFO | Application Version : 1.0.0
+2026-07-15 23:20:16,785 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:21:34,397 | INFO | ============================================================
+2026-07-15 23:21:34,397 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:21:34,398 | INFO | Application Version : 1.0.0
+2026-07-15 23:21:34,400 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:22:26,900 | INFO | ============================================================
+2026-07-15 23:22:26,900 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:22:26,900 | INFO | Application Version : 1.0.0
+2026-07-15 23:22:26,903 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:32:46,231 | INFO | Prediction API Called
+2026-07-15 23:32:46,232 | INFO | Starting Prediction Service
+2026-07-15 23:32:46,232 | INFO | Feature Vector Created Successfully
+2026-07-15 23:32:46,272 | INFO | Prediction Generated : 0
+2026-07-15 23:32:46,274 | INFO | Fraud Probability : 0.00013596410281024873
+2026-07-15 23:32:46,274 | INFO | Creating Transaction Object
+2026-07-15 23:32:46,275 | INFO | Adding Transaction To Database Session
+2026-07-15 23:32:46,276 | INFO | Committing Transaction
+2026-07-15 23:32:46,369 | INFO | select pg_catalog.version()
+2026-07-15 23:32:46,369 | INFO | [raw sql] {}
+2026-07-15 23:32:46,372 | INFO | select current_schema()
+2026-07-15 23:32:46,372 | INFO | [raw sql] {}
+2026-07-15 23:32:46,374 | INFO | show standard_conforming_strings
+2026-07-15 23:32:46,374 | INFO | [raw sql] {}
+2026-07-15 23:32:46,375 | INFO | BEGIN (implicit)
+2026-07-15 23:32:46,379 | INFO | INSERT INTO transactions (transaction_time, amount, prediction, fraud_probability) VALUES (%(transaction_time)s, %(amount)s, %(prediction)s, %(fraud_probability)s) RETURNING transactions.id, transactions.created_at
+2026-07-15 23:32:46,380 | INFO | [generated in 0.00075s] {'transaction_time': 1.0, 'amount': 378.66, 'prediction': 0, 'fraud_probability': 0.00013596410281024873}
+2026-07-15 23:32:46,390 | INFO | COMMIT
+2026-07-15 23:32:46,392 | INFO | Refreshing Database Object
+2026-07-15 23:32:46,393 | INFO | BEGIN (implicit)
+2026-07-15 23:32:46,395 | INFO | SELECT transactions.id, transactions.transaction_time, transactions.amount, transactions.prediction, transactions.fraud_probability, transactions.created_at 
+FROM transactions 
+WHERE transactions.id = %(pk_1)s
+2026-07-15 23:32:46,396 | INFO | [generated in 0.00055s] {'pk_1': 3}
+2026-07-15 23:32:46,397 | INFO | Transaction Saved Successfully (ID=3)
+2026-07-15 23:32:46,398 | INFO | Transaction Saved Successfully
+2026-07-15 23:32:46,398 | INFO | Prediction Service Completed
+2026-07-15 23:32:46,398 | INFO | Prediction Completed Successfully
+2026-07-15 23:32:46,401 | INFO | ROLLBACK
+2026-07-15 23:34:23,383 | INFO | ============================================================
+2026-07-15 23:34:23,383 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:34:23,384 | INFO | Application Version : 1.0.0
+2026-07-15 23:34:23,386 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:34:40,684 | INFO | Loading XGBoost Model...
+2026-07-15 23:34:40,762 | INFO | XGBoost Model Loaded Successfully
+2026-07-15 23:34:40,769 | INFO | ============================================================
+2026-07-15 23:34:40,769 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:34:40,769 | INFO | Application Version : 1.0.0
+2026-07-15 23:34:40,772 | INFO | All API Routes Registered Successfully.
+2026-07-15 23:36:37,682 | INFO | Loading XGBoost Model...
+2026-07-15 23:36:37,765 | INFO | XGBoost Model Loaded Successfully
+2026-07-15 23:36:37,772 | INFO | ============================================================
+2026-07-15 23:36:37,773 | INFO | Starting Real-Time Financial Fraud Detection API...
+2026-07-15 23:36:37,773 | INFO | Application Version : 1.0.0
+2026-07-15 23:36:37,775 | INFO | All API Routes Registered Successfully.
